@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">AnimeQuizApp</string>
     <string name="Title">Quiz App</string>
+    <string name="enterName">Please enter your name</string>
+    <string name="name">Name</string>
+    <string name="startQuiz">Start</string>
 </resources>

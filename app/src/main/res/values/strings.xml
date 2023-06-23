@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AnimeQuizApp</string>
+    <string name="Title">Quiz App</string>
 </resources>

@@ -2,7 +2,6 @@ package com.example.animequizapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.OnClickListener
 import android.widget.ImageView
@@ -37,22 +36,18 @@ class QuizQuestionsActivity : AppCompatActivity(), OnClickListener {
         textViewOptionThree = findViewById(R.id.tvOptionThree)
         textViewOptionFour = findViewById(R.id.tvOptionFour)
 
+        mQuestionsList = Constants.getQuestions()
         setQuestion()
     }
 
     private fun setQuestion() {
-        val questionsList = Constants.getQuestions()
-        Log.i("QuestionsList Size is", "${questionsList.size}")
 
-        for (i in questionsList) {
-            Log.e("Questions", i.question)
-        }
 
-        var currentPosition = 1
-        val question: Question = questionsList[currentPosition - 1]
+        mCurrentPosition = 1
+        val question: Question = mQuestionsList!![mCurrentPosition - 1]
         imageViewImage?.setImageResource(question.image)
-        progressBar?.progress = currentPosition
-        textViewProgress?.text = "$currentPosition/${progressBar?.max}"
+        progressBar?.progress = mCurrentPosition
+        textViewProgress?.text = "$mCurrentPosition/${progressBar?.max}"
         textViewQuestion?.text = question.question
         textViewOptionOne?.text = question.optionOne
         textViewOptionTwo?.text = question.optionTwo

@@ -1,5 +1,6 @@
 package com.example.animequizapp
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.Typeface
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 
 class QuizQuestionsActivity : AppCompatActivity(), OnClickListener {
@@ -42,21 +44,24 @@ class QuizQuestionsActivity : AppCompatActivity(), OnClickListener {
         textViewOptionFour = findViewById(R.id.tvOptionFour)
         submitButton = findViewById(R.id.submitButton)
 
+
+
+        mQuestionsList = Constants.getQuestions()
+        setQuestion()
+
+
         textViewOptionOne?.setOnClickListener(this)
         textViewOptionTwo?.setOnClickListener(this)
         textViewOptionThree?.setOnClickListener(this)
         textViewOptionFour?.setOnClickListener(this)
         submitButton?.setOnClickListener(this)
 
-
-        mQuestionsList = Constants.getQuestions()
-        setQuestion()
     }
 
     private fun setQuestion() {
 
 
-        mCurrentPosition = 1
+        defaultOptionsView()
         val question: Question = mQuestionsList!![mCurrentPosition - 1]
         imageViewImage?.setImageResource(question.image)
         progressBar?.progress = mCurrentPosition
@@ -72,6 +77,7 @@ class QuizQuestionsActivity : AppCompatActivity(), OnClickListener {
         } else {
             submitButton?.text = "SUBMIT"
         }
+
 
     }
 
@@ -113,30 +119,91 @@ class QuizQuestionsActivity : AppCompatActivity(), OnClickListener {
     }
 
     override fun onClick(view: View?) {
-       when(view?.id) {
-           R.id.tvOptionOne -> {
-               textViewOptionOne?.let {
-                   selectedOptionView(it, 1)
-               }
-           }
-           R.id.tvOptionTwo -> {
-               textViewOptionTwo?.let {
-                   selectedOptionView(it, 2)
-               }
-           }
-           R.id.tvOptionThree -> {
-               textViewOptionThree?.let {
-                   selectedOptionView(it, 3)
-               }
-           }
-           R.id.tvOptionFour -> {
-               textViewOptionFour?.let {
-                   selectedOptionView(it, 4)
-               }
-           }
-           R.id.submitButton -> {
-               // TODO "implement button submit"
-           }
-       }
+        when (view?.id) {
+            R.id.tvOptionOne -> {
+                textViewOptionOne?.let {
+                    selectedOptionView(it, 1)
+                }
+            }
+
+            R.id.tvOptionTwo -> {
+                textViewOptionTwo?.let {
+                    selectedOptionView(it, 2)
+                }
+            }
+
+            R.id.tvOptionThree -> {
+                textViewOptionThree?.let {
+                    selectedOptionView(it, 3)
+                }
+            }
+
+            R.id.tvOptionFour -> {
+                textViewOptionFour?.let {
+                    selectedOptionView(it, 4)
+                }
+            }
+
+            R.id.submitButton -> {
+                if (mSelectedOptionPosition == 0) {
+                    mCurrentPosition++
+                    when {
+                        mCurrentPosition <= mQuestionsList!!.size -> {
+                            setQuestion()
+                        }
+                        else -> {
+                            Toast.makeText(this, "You Made it to the end", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                } else {
+                    val question = mQuestionsList?.get(mCurrentPosition - 1)
+                    if (question!!.correctAnswer != mSelectedOptionPosition) {
+                        answerView(mSelectedOptionPosition, R.drawable.wrong_option_border_bg)
+                    }
+                    answerView(question.correctAnswer, R.drawable.correct_option_border_bg)
+
+                    if (mCurrentPosition == mQuestionsList!!.size) {
+                        submitButton?.text = "FINISH"
+                    } else {
+                        submitButton?.text = "GO TO NEXT QUESTION"
+                    }
+
+                    mSelectedOptionPosition = 0
+                }
+
+                if (submitButton?.text == "FINISH") {
+                    submitButton?.setOnClickListener {
+                        val intent = Intent(this,ResultActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun answerView(answer: Int, drawableView: Int) {
+        when (answer) {
+            1 -> {
+                textViewOptionOne?.background =
+                    ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
+            }
+
+            2 -> {
+                textViewOptionTwo?.background =
+                    ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
+            }
+
+            3 -> {
+                textViewOptionThree?.background =
+                    ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
+            }
+
+            4 -> {
+                textViewOptionFour?.background =
+                    ContextCompat.getDrawable(this@QuizQuestionsActivity, drawableView)
+            }
+        }
+
     }
 }

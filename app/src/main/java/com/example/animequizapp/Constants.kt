@@ -2,10 +2,9 @@ package com.example.animequizapp
 
 object Constants {
     fun getQuestions(): ArrayList<Question> {
-        val questionText = "What is the name of this Anime Character ?"
         val questionsList = ArrayList<Question>()
         val question1 = Question(
-            1, questionText,
+            1, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_ichigo,
             "Naruto", "Ichigo", "Goku", "Aizen",
             2
@@ -14,7 +13,7 @@ object Constants {
         questionsList.add(question1)
 
         val question2 = Question(
-            2, questionText,
+            2, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_aizen,
             "Ywhach", "Ichigo", "Itachi", "Aizen",
             4
@@ -24,7 +23,7 @@ object Constants {
 
 
         val question3 = Question(
-            3, questionText,
+            3, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_itachi,
             "Itachi", "Sasuke", "Hashirama", "Madara",
             1
@@ -34,7 +33,7 @@ object Constants {
 
 
         val question4 = Question(
-            4, questionText,
+            4, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_ulquiorra,
             "Unohana", "Kenpachi", "Ulquiorra", "Grimmjow",
             3
@@ -43,7 +42,7 @@ object Constants {
         questionsList.add(question4)
 
         val question5 = Question(
-            5, questionText,
+            5, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_whitebeard,
             "Luffy", "Zoro", "Kaido", "Whitebeard",
             4
@@ -52,7 +51,7 @@ object Constants {
         questionsList.add(question5)
 
         val question6 = Question(
-            6, questionText,
+            6, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_luffy,
             "Zoro", "Shanks", "Luffy", "Imu",
             3
@@ -61,7 +60,7 @@ object Constants {
         questionsList.add(question6)
 
         val question7 = Question(
-            7, questionText,
+            7, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_eren,
             "Mikasa", "Eren", "Reiner", "Levi",
             2
@@ -71,7 +70,7 @@ object Constants {
 
 
         val question8 = Question(
-            8, questionText,
+            8, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_ace,
             "Ace", "Marco", "Tanjiro", "Big Mom",
             1
@@ -81,7 +80,7 @@ object Constants {
 
 
         val question9 = Question(
-            9, questionText,
+            9, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_urahara,
             "Jugram", "Yamamoto", "Urahara", "Rukia",
             3
@@ -90,7 +89,7 @@ object Constants {
         questionsList.add(question9)
 
         val question10 = Question(
-            10, questionText,
+            10, "What is the name of this Anime Character ?",
             R.drawable.ic_character_of_goku,
             "Goku", "Vegeta", "Beerus", "Jiren",
             1

@@ -1,6 +1,12 @@
 package com.example.animequizapp
 
 object Constants {
+
+    const val USER_NAME: String = "user_name"
+    const val TOTAL_QUESTIONS: String = "total_questions"
+    const val CORRECT_ANSWERS: String = "correct_answers"
+
+
     fun getQuestions(): ArrayList<Question> {
         val questionsList = ArrayList<Question>()
         val question1 = Question(
@@ -96,6 +102,74 @@ object Constants {
         )
 
         questionsList.add(question10)
+
+        val question11 = Question(
+            11, "What is the schrift of Ywhach ?",
+            R.drawable.ic_character_of_ywhach,
+            "The Visionary", "The Balance", "The Almighty", "The Fear",
+            3
+        )
+
+        questionsList.add(question11)
+
+        val question12 = Question(
+            12, "What is the zanpakuto name of Ichigo ?",
+            R.drawable.ic_character_of_ichigo,
+            "Zangetsu", "Kyokasuigetsu", "Hyorinmaru", "Zabimaru",
+            1
+        )
+
+        questionsList.add(question12)
+
+
+        val question13 = Question(
+            13, "What is the name of ichigo's bankai",
+            R.drawable.ic_character_of_ichigobankai,
+            "Minazuki", "Hakka no Togame", "Tensa Zangetsu", "Senbonzakura Kageyoshi",
+            3
+        )
+
+        questionsList.add(question13)
+
+
+        val question14 = Question(
+            14, "What is this eye called ?",
+            R.drawable.ic_eye_of_mangekyousharingan,
+            "Tenseigan", "Mangekyou Sharingan", "Rinnegan", "Byakugan",
+            2
+        )
+
+        questionsList.add(question14)
+
+
+        val question15 = Question(
+            15, "What is this eye called ?",
+            R.drawable.ic_eye_of_rinnegan,
+            "Rinnegan", "Sharingan", "Mangekyou Sharingan", "Tenseigan",
+            1
+        )
+
+        questionsList.add(question15)
+
+
+        val question16 = Question(
+            16, "What is the schrift of Gremmy ?",
+            R.drawable.ic_character_of_gremmy,
+            "The Visionary", "The Almighty", "The Heat", "The Balance",
+            1
+            )
+
+        questionsList.add(question16)
+
+
+        val question17 = Question(
+            17, "What is the schrift of Jugram ?",
+            R.drawable.ic_character_of_jugram,
+            "The Visionary", "The Iron", "The Fear", "The Balance",
+            4
+        )
+
+        questionsList.add(question17)
 
         return questionsList
 

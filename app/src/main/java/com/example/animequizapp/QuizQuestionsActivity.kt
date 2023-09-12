@@ -122,6 +122,10 @@ class QuizQuestionsActivity : AppCompatActivity(), OnClickListener {
         )
     }
 
+    /**
+     * @author Ömer Aynaci
+     * @description click button
+     */
     override fun onClick(view: View?) {
         when (view?.id) {
             R.id.tvOptionOne -> {
